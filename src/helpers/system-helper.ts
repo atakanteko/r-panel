@@ -1,6 +1,7 @@
 import {
   LanguageTypeEnum,
   LocalStorageEnum,
+  MenuTypeEnum,
   SystemKeysEnum,
   ThemeTypeEnum,
 } from 'types/enums/global-enums';
@@ -11,6 +12,7 @@ import { LocalStorageHelper } from './local-storage-helper';
 export const defaultSystemConfig: ISystemState = {
   [SystemKeysEnum.THEME]: ThemeTypeEnum.LIGHT,
   [SystemKeysEnum.LANGUAGE]: LanguageTypeEnum.EN,
+  [SystemKeysEnum.MENU]: MenuTypeEnum.VERTICAL,
 };
 
 export const updateSystemConfig = (key: SystemKeys, value: string | number) => {

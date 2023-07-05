@@ -12,6 +12,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
     () => ({
       settings: defaultSystemConfig,
       changeTheme: ThemeReducers.changeTheme,
+      changeMenuType: ThemeReducers.changeMenuType,
     }),
     []
   );

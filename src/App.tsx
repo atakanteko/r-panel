@@ -20,11 +20,11 @@ function App() {
   }, []);
 
   return (
-    <ConfigProvider>
-      <ThemeProvider>
+    <ThemeProvider>
+      <ConfigProvider>
         <Router />
-      </ThemeProvider>
-    </ConfigProvider>
+      </ConfigProvider>
+    </ThemeProvider>
   );
 }
 

@@ -1,13 +1,12 @@
 import { Button } from 'antd';
 import { useThemeContext } from 'hooks/useThemeContext';
-import { ThemeTypeEnum } from 'types/enums/global-enums';
+import { MenuTypeEnum, ThemeTypeEnum } from 'types/enums/global-enums';
 
 function PanelLayout() {
-  const { settings, changeTheme } = useThemeContext();
-
+  const ctx = useThemeContext();
   return (
     <div>
-      <Button onClick={() => changeTheme(ThemeTypeEnum.DARK)}>
+      <Button onClick={() => ctx.changeMenuType(MenuTypeEnum.HORIZONTAL)}>
         Swith Theme
       </Button>
     </div>
