@@ -32,6 +32,9 @@
       "@/routes/*": ["./src/routes/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/types/*": ["./src/types/*"],
+      "@/theme/*": ["./src/theme/*"],
+      "@/helpers/*": ["./src/helpers/*"],
+      "@/hooks/*": ["./src/hooks/*"],
     }
   },
   "include": [

@@ -15,6 +15,9 @@ export default defineConfig({
       routes: path.resolve(__dirname, "./src/routes"),
       styles: path.resolve(__dirname, "./src/styles"),
       types: `${path.resolve(__dirname, "./src/types")}`,
+      theme: `${path.resolve(__dirname, "./src/theme")}`,
+      helpers: `${path.resolve(__dirname, "./src/helpers")}`,
+      hooks: `${path.resolve(__dirname, "./src/hooks")}`,
     },
   },
 })
