@@ -9,10 +9,14 @@ import { LocalStorageEnum } from 'types/enums/global-enums';
 
 function App() {
   useEffect(() => {
-    LocalStorageHelper.setLocalStorageItem(
-      LocalStorageEnum.SYSTEM,
-      defaultSystemConfig
-    );
+    if (
+      LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM) === null
+    ) {
+      LocalStorageHelper.setLocalStorageItem(
+        LocalStorageEnum.SYSTEM,
+        defaultSystemConfig
+      );
+    }
   }, []);
 
   return (
