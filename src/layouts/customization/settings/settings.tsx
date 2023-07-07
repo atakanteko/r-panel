@@ -6,6 +6,7 @@ import { MenuActions } from 'features/menu/menuSlices';
 import { useAppDispatch, useAppSelector } from 'hooks/useStore';
 
 import ColorSwitch from './color-switch/color-switch';
+import ThemeMode from './theme-mode/theme-mode';
 
 function Settings() {
   const dispatch = useAppDispatch();
@@ -22,6 +23,8 @@ function Settings() {
       destroyOnClose
     >
       <ColorSwitch />
+      <Divider />
+      <ThemeMode />
       <Divider />
     </Drawer>
   );
