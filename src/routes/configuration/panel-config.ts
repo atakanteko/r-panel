@@ -9,7 +9,9 @@ export const panelRoutes: IRoute[] = [
     children: [
       {
         path: '/',
-        // element: LazyLoader(lazy(() => import('../../pages/login/login'))),
+        element: LazyLoader(
+          lazy(() => import('../../pages/dashboard/dashboard'))
+        ),
         authGuard: false,
       },
     ],

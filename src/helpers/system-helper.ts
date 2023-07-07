@@ -1,7 +1,9 @@
 import {
+  BorderRadiusValuesEnum,
   LanguageTypeEnum,
   LocalStorageEnum,
   MenuTypeEnum,
+  PrimaryColorEnum,
   SystemKeysEnum,
   ThemeTypeEnum,
 } from 'types/enums/global-enums';
@@ -13,6 +15,8 @@ export const defaultSystemConfig: ISystemState = {
   [SystemKeysEnum.THEME]: ThemeTypeEnum.LIGHT,
   [SystemKeysEnum.LANGUAGE]: LanguageTypeEnum.EN,
   [SystemKeysEnum.MENU]: MenuTypeEnum.VERTICAL,
+  [SystemKeysEnum.BORDER_RADIUS]: BorderRadiusValuesEnum.B8,
+  [SystemKeysEnum.COLOR_PRIMARY]: PrimaryColorEnum.PURPLE,
 };
 
 export const updateSystemConfig = (key: SystemKeys, value: string | number) => {
@@ -20,12 +24,16 @@ export const updateSystemConfig = (key: SystemKeys, value: string | number) => {
   const existingData = LocalStorageHelper.getLocalStorageItem(
     LocalStorageEnum.SYSTEM
   );
-  //  if data doesn't exist create an empty object
+  let newData;
   const parsedData = existingData ?? {};
-  // Update the value for the specified key
-  parsedData[key] = value;
+  if (parsedData) {
+    newData = { ...existingData, [key]: value };
+  } else {
+    newData = { ...defaultSystemConfig, [key]: value };
+  }
+
   // Store the updated data back into local storage
-  LocalStorageHelper.setLocalStorageItem(LocalStorageEnum.SYSTEM, parsedData);
+  LocalStorageHelper.setLocalStorageItem(LocalStorageEnum.SYSTEM, newData);
 };
 
 export const SystemHelper = {

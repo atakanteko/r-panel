@@ -1,5 +1,7 @@
-import { ThemeConfig } from 'antd';
+import { AliasToken } from 'antd/es/theme/internal';
 
-export const darkToken: ThemeConfig = {
-  token: {},
+export const darkToken: Partial<AliasToken> = {
+  borderRadius: 12,
+  colorBgBase: 'red',
+  colorBgContainer: 'yellow',
 };
