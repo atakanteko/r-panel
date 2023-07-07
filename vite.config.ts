@@ -10,6 +10,7 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src/"),
       assets: `${path.resolve(__dirname, "./src/assets/")}`,
       components: `${path.resolve(__dirname, "./src/components/")}`,
+      features: `${path.resolve(__dirname, "./src/features/")}`,
       helpers: `${path.resolve(__dirname, "./src/helpers")}`,
       hooks: `${path.resolve(__dirname, "./src/hooks")}`,
       layouts: `${path.resolve(__dirname, "./layouts/")}`,
@@ -18,6 +19,7 @@ export default defineConfig({
       styles: path.resolve(__dirname, "./src/styles"),
       theme: `${path.resolve(__dirname, "./src/theme")}`,
       types: `${path.resolve(__dirname, "./src/types")}`,
+      store: `${path.resolve(__dirname, "./src/store")}`,
     },
   },
 })

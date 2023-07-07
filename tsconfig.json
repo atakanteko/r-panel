@@ -35,6 +35,8 @@
       "@/theme/*": ["./src/theme/*"],
       "@/helpers/*": ["./src/helpers/*"],
       "@/hooks/*": ["./src/hooks/*"],
+      "@/features/*": ["./src/features/*"],
+      "@/store/*": ["./src/store/*"],
     }
   },
   "include": [
