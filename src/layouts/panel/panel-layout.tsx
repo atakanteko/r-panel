@@ -1,23 +1,21 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 
+import PanelMenu from './panel-menu/panel-menu';
 import Customization from '../customization/customization';
 
 const { Header, Sider, Content } = Layout;
 
 function PanelLayout() {
   // const ctx = useThemeContext();
+  // const [themeMode, setThemeMode] = React.useState<>();
   const [collapsed, setCollapsed] = React.useState(false);
   const {
     token: { colorBgContainer, borderRadius },
   } = theme.useToken();
+
   return (
     <Layout className="r-panel-layout">
       <Sider
@@ -26,29 +24,9 @@ function PanelLayout() {
         collapsible
         collapsed={false}
         width={260}
+        theme="light"
       >
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          items={[
-            {
-              key: '1',
-              icon: <UserOutlined />,
-              label: 'nav 1',
-            },
-            {
-              key: '2',
-              icon: <VideoCameraOutlined />,
-              label: 'nav 2',
-            },
-            {
-              key: '3',
-              icon: <UploadOutlined />,
-              label: 'nav 3',
-            },
-          ]}
-        />
+        <PanelMenu />
       </Sider>
       <Layout className="r-panel-layout-content">
         <Customization />

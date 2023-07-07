@@ -15,7 +15,7 @@ function ColorSwitch() {
 
   const onChange = (e: RadioChangeEvent) => {
     setValue(e.target.value);
-    ctx.updateToken('colorPrimary', e.target.value);
+    ctx.updateToken('colorPrimaryBg', e.target.value);
   };
   return (
     <section className="r-panel-color-switch">

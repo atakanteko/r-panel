@@ -23,7 +23,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [overridableTokenItems, setOverridableTokenItems] =
     React.useState<IOverridableThemeItems>({
       borderRadius: 12,
-      colorPrimary: 'red',
+      colorPrimaryBg: 'red',
       theme: ThemeTypeEnum.LIGHT,
     });
 
@@ -40,7 +40,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
     setOverridableTokenItems({
       ...overridableTokenItems,
       borderRadius: BORDER_RADIUS,
-      colorPrimary: COLOR_PRIMARY,
+      colorPrimaryBg: COLOR_PRIMARY,
       theme: THEME,
     });
   }, []); // ToDo: infinite loop when overridableTokenItems as a dependency array item
@@ -55,7 +55,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
         case 'borderRadius':
           x = SystemKeysEnum.BORDER_RADIUS;
           break;
-        case 'colorPrimary':
+        case 'colorPrimaryBg':
           x = SystemKeysEnum.COLOR_PRIMARY;
           break;
         case 'theme':

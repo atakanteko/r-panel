@@ -24,6 +24,7 @@ function ThemeMode() {
         onChange={onChange}
         value={value}
         className="theme-mode-radio"
+        style={{ color: 'red' }}
       >
         <Radio value={ThemeTypeEnum.DARK} className="tm-dark">
           Dark

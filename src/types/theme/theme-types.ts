@@ -4,7 +4,7 @@ import { ISystemState } from 'types/global/system-types';
 
 export interface IOverridableThemeItems {
   theme: string;
-  colorPrimary: string;
+  colorPrimaryBg: string;
   borderRadius: number;
 }
 export interface IThemeContextType {

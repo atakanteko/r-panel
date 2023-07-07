@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import { ConfigProvider } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 import { LocalStorageHelper } from 'helpers/local-storage-helper';
 import { defaultSystemConfig } from 'helpers/system-helper';
 import { useThemeContext } from 'hooks/useThemeContext';
@@ -9,7 +9,9 @@ import { LocalStorageEnum } from 'types/enums/global-enums';
 
 function App() {
   const ctx = useThemeContext();
-
+  const clrPrimary = LocalStorageHelper.getLocalStorageItem(
+    LocalStorageEnum.SYSTEM
+  ).COLOR_PRIMARY;
   useEffect(() => {
     if (
       LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM) === null
@@ -23,7 +25,23 @@ function App() {
 
   return (
     <ConfigProvider
-      theme={{ token: { ...ctx.token, ...ctx.overridableTokenItems } }}
+      theme={{
+        token: { ...ctx.token, ...ctx.overridableTokenItems },
+        components: {
+          Radio: {
+            colorPrimary: clrPrimary,
+          },
+          Button: {
+            colorBgContainer: clrPrimary,
+            colorText: '#fff',
+            fontSize: 15,
+          },
+          Slider: {
+            colorPrimary: clrPrimary,
+            colorBgElevated: clrPrimary,
+          },
+        },
+      }}
     >
       <Router />
     </ConfigProvider>

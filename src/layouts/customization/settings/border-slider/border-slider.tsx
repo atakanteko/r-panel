@@ -23,6 +23,7 @@ function BorderSlider() {
           LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM)
             .BORDER_RADIUS
         }
+        dots
         onChange={changeBorderRadius}
         step={2}
         min={4}
