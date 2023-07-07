@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { Drawer } from 'antd';
+import { Divider, Drawer } from 'antd';
 import { isSettingWheelMenuOpen } from 'features/menu/menuSelectors';
 import { MenuActions } from 'features/menu/menuSlices';
 import { useAppDispatch, useAppSelector } from 'hooks/useStore';
+
+import ColorSwitch from './color-switch/color-switch';
 
 function Settings() {
   const dispatch = useAppDispatch();
@@ -14,12 +16,13 @@ function Settings() {
       className="r-panel-customization-settings-drawer"
       title="THEME CUSTOMIZER"
       placement="right"
-      width="40%"
+      width="400"
       onClose={() => dispatch(MenuActions.toggleSettingWheelMenu())}
-      open={settingWheelMenuStatus}
+      open={!settingWheelMenuStatus}
       destroyOnClose
     >
-      Test
+      <ColorSwitch />
+      <Divider />
     </Drawer>
   );
 }
