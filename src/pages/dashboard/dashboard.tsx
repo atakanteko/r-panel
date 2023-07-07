@@ -1,5 +1,6 @@
 import { Button } from 'antd';
 import { useThemeContext } from 'hooks/useThemeContext';
+import Customization from 'layouts/customization/customization';
 import {
   BorderRadiusValuesEnum,
   PrimaryColorEnum,

@@ -2,15 +2,13 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import {
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Button, Layout, Menu, Space, theme } from 'antd';
-import { useThemeContext } from 'hooks/useThemeContext';
-import { MenuTypeEnum, ThemeTypeEnum } from 'types/enums/global-enums';
+import { Layout, Menu, theme } from 'antd';
+
+import Customization from '../customization/customization';
 
 const { Header, Sider, Content } = Layout;
 
@@ -52,7 +50,8 @@ function PanelLayout() {
           ]}
         />
       </Sider>
-      <Layout>
+      <Layout className="r-panel-layout-content">
+        <Customization />
         <Header
           className="r-panel-header"
           style={{ background: colorBgContainer, borderRadius }}
