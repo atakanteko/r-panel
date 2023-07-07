@@ -1,7 +1,6 @@
 import { AliasToken } from 'antd/es/theme/internal';
 
 export const lightToken: Partial<AliasToken> = {
-  borderRadius: 2,
-  colorBgBase: 'red',
-  colorBgContainer: 'yellow',
+  colorBgBase: '#f8f7fa',
+  colorBgContainer: '#ffffff',
 };
