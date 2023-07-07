@@ -2,16 +2,18 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Layout, Menu, theme } from 'antd';
+import { isSidebarOpen } from 'features/menu/menuSelectors';
+import { useAppSelector } from 'hooks/useStore';
 
+import Logo from './logo/logo';
 import PanelMenu from './panel-menu/panel-menu';
 import Customization from '../customization/customization';
 
 const { Header, Sider, Content } = Layout;
 
 function PanelLayout() {
-  // const ctx = useThemeContext();
-  // const [themeMode, setThemeMode] = React.useState<>();
-  const [collapsed, setCollapsed] = React.useState(false);
+  const sidebarStatus = useAppSelector(isSidebarOpen);
+
   const {
     token: { colorBgContainer, borderRadius },
   } = theme.useToken();
@@ -22,10 +24,11 @@ function PanelLayout() {
         className="r-panel-sider"
         trigger={null}
         collapsible
-        collapsed={false}
+        collapsed={sidebarStatus}
         width={260}
         theme="light"
       >
+        <Logo />
         <PanelMenu />
       </Sider>
       <Layout className="r-panel-layout-content">
