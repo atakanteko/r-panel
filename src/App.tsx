@@ -12,6 +12,7 @@ function App() {
   const clrPrimary = LocalStorageHelper.getLocalStorageItem(
     LocalStorageEnum.SYSTEM
   ).COLOR_PRIMARY;
+
   useEffect(() => {
     if (
       LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM) === null
