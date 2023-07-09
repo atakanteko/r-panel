@@ -8,4 +8,5 @@ export const lightToken: Partial<AliasToken> = {
   colorPrimary: '#ffffff',
   colorBgTextHover: '#F5F5F6',
   colorPrimaryHover: '#ffffff',
+  colorSplit: '#DDDDE0',
 };

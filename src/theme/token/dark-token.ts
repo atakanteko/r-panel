@@ -8,4 +8,5 @@ export const darkToken: Partial<AliasToken> = {
   colorPrimary: '#ffffff',
   colorBgTextHover: '#373B50',
   colorPrimaryHover: '#ffffff',
+  colorSplit: '#484D64',
 };
