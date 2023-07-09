@@ -1,21 +1,22 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { Layout, Menu, theme } from 'antd';
+import { Layout, theme } from 'antd';
 import { isSidebarOpen } from 'features/menu/menuSelectors';
 import { useAppSelector } from 'hooks/useStore';
 
+import AppHeader from './header/header';
 import Logo from './logo/logo';
 import PanelMenu from './panel-menu/panel-menu';
 import Customization from '../customization/customization';
 
-const { Header, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 function PanelLayout() {
   const sidebarStatus = useAppSelector(isSidebarOpen);
 
   const {
-    token: { colorBgContainer, borderRadius },
+    token: { colorBgContainer },
   } = theme.useToken();
 
   return (
@@ -33,12 +34,7 @@ function PanelLayout() {
       </Sider>
       <Layout className="r-panel-layout-content">
         <Customization />
-        <Header
-          className="r-panel-header"
-          style={{ background: colorBgContainer, borderRadius }}
-        >
-          Header
-        </Header>
+        <AppHeader />
         <Content
           className="r-panel-content"
           style={{
