@@ -1,12 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
 import { Radio, Typography } from 'antd';
 import type { RadioChangeEvent } from 'antd';
+import { GlobalActions } from 'features/global/globalSlices';
 import { LocalStorageHelper } from 'helpers/local-storage-helper';
 import { useThemeContext } from 'hooks/useThemeContext';
 import { LocalStorageEnum, PrimaryColorEnum } from 'types/enums/global-enums';
 
 function ColorSwitch() {
+  const dispatch = useDispatch();
   const ctx = useThemeContext();
   const [value, setValue] = React.useState(
     LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM)
@@ -16,6 +19,7 @@ function ColorSwitch() {
   const onChange = (e: RadioChangeEvent) => {
     setValue(e.target.value);
     ctx.updateToken('colorPrimaryBg', e.target.value);
+    dispatch(GlobalActions.changePrimaryColor(e.target.value));
   };
   return (
     <section className="r-panel-color-switch">

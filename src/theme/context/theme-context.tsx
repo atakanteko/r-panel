@@ -20,6 +20,15 @@ import { ThemeReducers } from './reducers/theme-reducers';
 export const ThemeContext = createContext<IThemeContextType | null>(null);
 
 function ThemeProvider({ children }: { children: React.ReactNode }) {
+  if (
+    LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM) === null
+  ) {
+    LocalStorageHelper.setLocalStorageItem(
+      LocalStorageEnum.SYSTEM,
+      defaultSystemConfig
+    );
+  }
+
   const [overridableTokenItems, setOverridableTokenItems] =
     React.useState<IOverridableThemeItems>({
       borderRadius: 12,
@@ -84,15 +93,6 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
     }),
     [overridableTokenItems, memoizedUpdateOverridableTokenItemsState, themeMode]
   );
-
-  if (
-    LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM) === null
-  ) {
-    LocalStorageHelper.setLocalStorageItem(
-      LocalStorageEnum.SYSTEM,
-      defaultSystemConfig
-    );
-  }
 
   return (
     <ThemeContext.Provider value={memoizedSettings}>
