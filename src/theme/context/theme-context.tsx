@@ -33,7 +33,6 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
       ? lightToken
       : darkToken
   );
-
   React.useEffect(() => {
     const { BORDER_RADIUS, COLOR_PRIMARY, THEME } =
       LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM);
@@ -43,7 +42,7 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
       colorPrimaryBg: COLOR_PRIMARY,
       theme: THEME,
     });
-  }, []); // ToDo: infinite loop when overridableTokenItems as a dependency array item
+  }, []);
 
   const memoizedUpdateOverridableTokenItemsState = React.useMemo(() => {
     return <K extends keyof IOverridableThemeItems>(
@@ -85,6 +84,15 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
     }),
     [overridableTokenItems, memoizedUpdateOverridableTokenItemsState, themeMode]
   );
+
+  if (
+    LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM) === null
+  ) {
+    LocalStorageHelper.setLocalStorageItem(
+      LocalStorageEnum.SYSTEM,
+      defaultSystemConfig
+    );
+  }
 
   return (
     <ThemeContext.Provider value={memoizedSettings}>
