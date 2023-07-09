@@ -8,6 +8,7 @@ import { isSidebarOpen } from 'features/menu/menuSelectors';
 import { MenuActions } from 'features/menu/menuSlices';
 import { useAppSelector, useAppDispatch } from 'hooks/useStore';
 
+import AppLanguage from './app-language/app-language';
 import UserAvatar from './user-avatar/user-avatar';
 
 function AppHeader() {
@@ -29,6 +30,7 @@ function AppHeader() {
         {sidebarStatus ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
       </div>
       <div className="header-right">
+        <AppLanguage />
         <UserAvatar />
       </div>
     </Layout.Header>

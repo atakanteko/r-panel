@@ -1,8 +1,8 @@
 @import "./user-avatar/_user-avatar.less";
+@import "./app-language/_language.less";
 
 .header-partial {
     header.ant-layout-header.r-panel-header {
-        .user-avatar-partial();
         box-shadow: 0 2px 6px rgba(47, 43, 61,.14),0 0 transparent,0 0 transparent;
         margin: 1rem 1.5rem 1rem 1.5rem;
         padding-inline: 1.5rem;
@@ -16,6 +16,11 @@
             }
         }
         .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1.4rem;
+            .user-avatar-partial();
+            .app-language-partial();
 
         }
     }
