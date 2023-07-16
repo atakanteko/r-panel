@@ -1,4 +1,5 @@
 import { AliasToken } from 'antd/es/theme/internal';
+import { PrimaryColorEnum } from 'types/enums/global-enums';
 
 export const lightToken: Partial<AliasToken> = {
   colorBgMask: 'rgba(0, 0, 0, 0)',
@@ -9,4 +10,7 @@ export const lightToken: Partial<AliasToken> = {
   colorBgTextHover: '#F5F5F6',
   colorPrimaryHover: '#ffffff',
   colorSplit: '#DDDDE0',
+  colorErrorOutline: PrimaryColorEnum.RED,
+  controlOutline: '#111',
+  controlOutlineWidth: 1,
 };

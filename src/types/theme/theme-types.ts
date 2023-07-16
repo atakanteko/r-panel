@@ -13,7 +13,7 @@ export interface IThemeContextType {
   token: Partial<AliasToken>;
   changeMenuType: (menuType: MenuTypeEnum) => void;
   updateToken: (
-    ket: keyof IOverridableThemeItems,
+    key: keyof IOverridableThemeItems,
     val: number | string
   ) => void;
 }

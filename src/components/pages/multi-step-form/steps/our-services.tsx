@@ -1,7 +1,7 @@
 import React from 'react';
 
 function OurServices() {
-  return <div>OurServices</div>;
+  return <div className="form-p">OurServices</div>;
 }
 
 export default OurServices;

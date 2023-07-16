@@ -14,7 +14,6 @@ const ProjectBudgetComponent = React.lazy(
 
 function Steps() {
   const ctx = useMultiStepModalStepper();
-  console.log('step:', ctx.currentStep);
 
   const displayComponent = () => {
     switch (ctx.currentStep) {

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ProjectBudget() {
-  return <div>ProjectBudget</div>;
+  return <div className="form-p">ProjectBudget</div>;
 }
 
 export default ProjectBudget;

@@ -41,6 +41,10 @@ function App() {
             colorPrimary: clrPrimary,
             colorBgElevated: clrPrimary,
           },
+          Steps: {
+            colorPrimary: 'gray',
+            colorText: clrPrimary,
+          },
         },
       }}
     >

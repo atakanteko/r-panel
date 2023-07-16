@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button, Col, Form, Input, Modal, Row } from 'antd';
+import { MultiStepFormModel } from 'assets/model/multi-step-form-model';
 import { isStepperFormModalOpen } from 'features/stepper/stepperSelectors';
 import { StepperActions } from 'features/stepper/stepperSlices';
 import { useAppDispatch, useAppSelector } from 'hooks/useStore';
@@ -20,11 +21,22 @@ export const MultiStepFormModalContext =
 
 function MultiStepModalProvider({ children }: { children: React.ReactNode }) {
   const dispatch = useAppDispatch();
+  const [formError, setFormError] = React.useState(false);
   const [isTouched, setIsTouched] = React.useState<boolean>(false);
   const [currentStep, setCurrentStep] = React.useState<number>(0);
+  const [initialFormModel, setInitialFormModel] = React.useState(
+    MultiStepFormModel.contactDetailsFormFieldList
+  );
+  const stepperFormModalStatus = useAppSelector(isStepperFormModalOpen);
   const [form] = Form.useForm();
 
-  const stepperFormModalStatus = useAppSelector(isStepperFormModalOpen);
+  React.useEffect(() => {
+    setIsTouched(false);
+    setFormError(false);
+    if (currentStep === 0) {
+      setInitialFormModel(MultiStepFormModel.contactDetailsFormFieldList);
+    }
+  }, [currentStep]);
 
   const getAnyFieldTouchedInfo = () => {
     setIsTouched(true);
@@ -45,10 +57,10 @@ function MultiStepModalProvider({ children }: { children: React.ReactNode }) {
   };
 
   const onValuesChange = (_: any, allValues: any) => {
-    // const isFormValid = initialFormModel.every(
-    //   (field) => allValues[field] !== undefined && allValues[field] !== ''
-    // );
-    // setFormError(!isFormValid);
+    const isFormValid = initialFormModel.every(
+      (field) => allValues[field] !== undefined && allValues[field] !== ''
+    );
+    setFormError(!isFormValid);
   };
 
   return (
@@ -57,8 +69,8 @@ function MultiStepModalProvider({ children }: { children: React.ReactNode }) {
         className="r-panel-stepper-modal"
         title={<StepperHeader currentStep={currentStep} />}
         centered
-        // open={stepperFormModalStatus}
-        open
+        open={stepperFormModalStatus}
+        // open
         // onOk={() => setOpen(false)}
         onCancel={() => dispatch(StepperActions.closeStepperModal())}
         width="70%"
@@ -73,8 +85,8 @@ function MultiStepModalProvider({ children }: { children: React.ReactNode }) {
           layout="vertical"
         >
           {children}
-          <Row>
-            <Col lg={12}>
+          <Row className="button-section">
+            <Col lg={3}>
               <Button
                 htmlType="button"
                 disabled={currentStep === 0}
@@ -83,8 +95,18 @@ function MultiStepModalProvider({ children }: { children: React.ReactNode }) {
                 Previous
               </Button>
             </Col>
-            <Col lg={12}>
-              <Button htmlType="submit">Next</Button>
+            <Col lg={3}>
+              <Button
+                htmlType="submit"
+                disabled={
+                  currentStep ===
+                  MultiStepFormModel.contactDetailsFormStepperItems.length - 1
+                    ? false
+                    : !isTouched || formError
+                }
+              >
+                Next
+              </Button>
             </Col>
           </Row>
         </Form>
