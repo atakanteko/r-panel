@@ -86,7 +86,7 @@ function MultiStepModalProvider({ children }: { children: React.ReactNode }) {
         >
           {children}
           <Row className="button-section">
-            <Col lg={3}>
+            <Col lg={3} xs={24}>
               <Button
                 htmlType="button"
                 disabled={currentStep === 0}
@@ -95,7 +95,7 @@ function MultiStepModalProvider({ children }: { children: React.ReactNode }) {
                 Previous
               </Button>
             </Col>
-            <Col lg={3}>
+            <Col lg={3} xs={24}>
               <Button
                 htmlType="submit"
                 disabled={

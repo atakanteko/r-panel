@@ -13,7 +13,7 @@ function ContactDetails() {
         <Typography.Title level={3}>Contact Details</Typography.Title>
       </Row>
       <Row gutter={16}>
-        <Col lg={12} md={24} sm={24}>
+        <Col lg={12} md={24} sm={24} xs={24}>
           <InputBase
             form={ctx.form}
             label="Name"
@@ -29,7 +29,7 @@ function ContactDetails() {
             ]}
           />
         </Col>
-        <Col lg={12} md={24} sm={24}>
+        <Col lg={12} md={24} sm={24} xs={24}>
           <InputBase
             form={ctx.form}
             label="Email"
@@ -47,7 +47,7 @@ function ContactDetails() {
         </Col>
       </Row>
       <Row gutter={16}>
-        <Col lg={12} md={24} sm={24}>
+        <Col lg={12} md={24} sm={24} xs={24}>
           <InputBase
             form={ctx.form}
             label="Phone Number"
@@ -63,7 +63,7 @@ function ContactDetails() {
             ]}
           />
         </Col>
-        <Col lg={12} md={24} sm={24}>
+        <Col lg={12} md={24} sm={24} xs={24}>
           <InputBase
             form={ctx.form}
             label="Company"
