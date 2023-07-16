@@ -14,6 +14,13 @@ export const panelRoutes: IRoute[] = [
         ),
         authGuard: false,
       },
+      {
+        path: '/multi-step-form',
+        element: LazyLoader(
+          lazy(() => import('../../pages/multi-step-form/multi-step-form'))
+        ),
+        authGuard: false,
+      },
     ],
   },
 ];
