@@ -51,7 +51,6 @@ function InputBase({
   normalizerFunc,
 }: InputBaseProps) {
   const [ruleList, setRuleList] = React.useState(rules);
-  console.log('debug-issue', ruleList);
 
   const inputWatcher = Form.useWatch(name, form);
   const ctx = useMultiStepModalStepper();

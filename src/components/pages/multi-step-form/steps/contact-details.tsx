@@ -61,6 +61,7 @@ function ContactDetails() {
             inputType="text"
             name="contactPhoneNumber"
             prefixType="phoneIcon"
+            normalizerFunc={StringHelper.phoneNumberFormatter}
             rules={[
               {
                 message: 'Phone field is required',
