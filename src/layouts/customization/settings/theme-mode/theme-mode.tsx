@@ -2,11 +2,14 @@ import React from 'react';
 
 import type { RadioChangeEvent } from 'antd';
 import { Radio, Typography } from 'antd';
+import { GlobalActions } from 'features/global/globalSlices';
 import { LocalStorageHelper } from 'helpers/local-storage-helper';
+import { useAppDispatch } from 'hooks/useStore';
 import { useThemeContext } from 'hooks/useThemeContext';
 import { LocalStorageEnum, ThemeTypeEnum } from 'types/enums/global-enums';
 
 function ThemeMode() {
+  const dispatch = useAppDispatch();
   const ctx = useThemeContext();
   const [value, setValue] = React.useState(
     LocalStorageHelper.getLocalStorageItem(LocalStorageEnum.SYSTEM).THEME
@@ -14,6 +17,7 @@ function ThemeMode() {
 
   const onChange = (e: RadioChangeEvent) => {
     setValue(e.target.value);
+    dispatch(GlobalActions.changeTheme(e.target.value));
     ctx.updateToken('theme', e.target.value);
   };
 

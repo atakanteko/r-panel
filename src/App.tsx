@@ -1,13 +1,16 @@
 import React, { useEffect } from 'react';
 
-import { ConfigProvider, theme } from 'antd';
+import { ConfigProvider } from 'antd';
+import { getSystemTheme } from 'features/global/globalSelectors';
 import { LocalStorageHelper } from 'helpers/local-storage-helper';
 import { defaultSystemConfig } from 'helpers/system-helper';
+import { useAppSelector } from 'hooks/useStore';
 import { useThemeContext } from 'hooks/useThemeContext';
 import Router from 'routes/routes';
-import { LocalStorageEnum } from 'types/enums/global-enums';
+import { LocalStorageEnum, ThemeTypeEnum } from 'types/enums/global-enums';
 
 function App() {
+  const sysTheme = useAppSelector(getSystemTheme);
   const ctx = useThemeContext();
   const clrPrimary = LocalStorageHelper.getLocalStorageItem(
     LocalStorageEnum.SYSTEM
@@ -44,6 +47,12 @@ function App() {
           Steps: {
             colorPrimary: 'gray',
             colorText: clrPrimary,
+          },
+          Menu: {
+            activeBarBorderWidth: 0,
+            subMenuItemBg: 'transparant',
+            itemSelectedColor:
+              sysTheme === ThemeTypeEnum.LIGHT ? '#111' : '#fff',
           },
         },
       }}
