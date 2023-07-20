@@ -4,6 +4,19 @@ import { Form, Input, Typography } from 'antd';
 import SvgGenerator from 'components/ui/svg-generator';
 import { useMultiStepModalStepper } from 'hooks/useuseMultiStepModalContext';
 
+type Validator = (
+  rule: RuleObject,
+  value: any,
+  callback: (error?: string) => void
+) => Promise<void | any> | void;
+
+export type RuleObject = AggregationRule;
+interface ValidatorRule {
+  warningOnly?: boolean;
+  message?: string | React.ReactElement;
+  validator: Validator;
+}
+
 export interface BaseRule {
   warningOnly?: boolean;
   len?: number;
@@ -14,13 +27,18 @@ export interface BaseRule {
   required?: boolean;
 }
 
+type AggregationRule = BaseRule & Partial<ValidatorRule>;
+
+type Rule = RuleObject;
+
 export type InputBaseProps = {
   form: any;
   label: string;
-  rules: BaseRule[];
+  rules: Rule[];
   name: string;
   prefixType?: 'userIcon' | 'emailIcon' | 'phoneIcon' | 'companyIcon';
   inputType: 'text' | 'number';
+  normalizerFunc?: (...args: any[]) => any;
 };
 
 function InputBase({
@@ -30,7 +48,11 @@ function InputBase({
   rules,
   prefixType,
   inputType,
+  normalizerFunc,
 }: InputBaseProps) {
+  const [ruleList, setRuleList] = React.useState(rules);
+  console.log('debug-issue', ruleList);
+
   const inputWatcher = Form.useWatch(name, form);
   const ctx = useMultiStepModalStepper();
 
@@ -49,7 +71,7 @@ function InputBase({
           </Typography.Title>
         </div>
       </div>
-      <Form.Item name={name} rules={rules}>
+      <Form.Item name={name} normalize={normalizerFunc} rules={[...ruleList]}>
         <Input
           type={inputType}
           size="large"

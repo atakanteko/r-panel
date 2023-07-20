@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Col, Row, Typography } from 'antd';
 import InputBase from 'components/ui/data-entry/input/base/input-base';
+import { StringHelper } from 'helpers/string-helper';
 import { useMultiStepModalStepper } from 'hooks/useuseMultiStepModalContext';
 
 function ContactDetails() {
@@ -22,9 +23,8 @@ function ContactDetails() {
             prefixType="userIcon"
             rules={[
               {
-                message: 'This field is required',
+                message: 'Name field is required',
                 required: true,
-                max: 255,
               },
             ]}
           />
@@ -38,9 +38,16 @@ function ContactDetails() {
             prefixType="emailIcon"
             rules={[
               {
-                message: 'This field is required',
+                message: 'Email field is required',
                 required: true,
-                max: 255,
+              },
+              {
+                validator: (_, value) => {
+                  if (StringHelper.isEmailValid(value)) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('Invalid email address'));
+                },
               },
             ]}
           />
@@ -56,9 +63,8 @@ function ContactDetails() {
             prefixType="phoneIcon"
             rules={[
               {
-                message: 'This field is required',
+                message: 'Phone field is required',
                 required: true,
-                max: 255,
               },
             ]}
           />
@@ -72,9 +78,8 @@ function ContactDetails() {
             prefixType="companyIcon"
             rules={[
               {
-                message: 'This field is required',
+                message: 'Company field is required',
                 required: true,
-                max: 255,
               },
             ]}
           />
