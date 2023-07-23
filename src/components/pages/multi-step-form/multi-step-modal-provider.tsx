@@ -69,8 +69,8 @@ function MultiStepModalProvider({ children }: { children: React.ReactNode }) {
         className="r-panel-stepper-modal"
         title={<StepperHeader currentStep={currentStep} />}
         centered
-        // open={stepperFormModalStatus}
-        open
+        open={stepperFormModalStatus}
+        // open
         // onOk={() => setOpen(false)}
         onCancel={() => dispatch(StepperActions.closeStepperModal())}
         width="70%"
